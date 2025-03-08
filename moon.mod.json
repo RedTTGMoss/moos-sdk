@@ -1,0 +1,13 @@
+{
+  "name": "furesoft/moos-sdk",
+  "version": "0.1.2",
+  "deps": {
+    "gmlewis/moonbit-pdk": "0.47.2"
+  },
+  "readme": "README.md",
+  "repository": "",
+  "license": "Apache-2.0",
+  "keywords": [],
+  "description": "",
+  "source": "src"
+}
