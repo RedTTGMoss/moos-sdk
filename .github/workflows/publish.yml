@@ -30,9 +30,11 @@ jobs:
 
       - name: Setup MoonBit
         uses: hustcer/setup-moonbit@v1.11
-
+      
       - name: Setup MoonCake Credentials
-        run: jq -n --arg token "$mooncake_token" '{"token": $token}' > /home/runner/.moon/credentials.json
+        run: |
+          mkdir -p /home/runner/.moon
+          echo '{"token": "${{ secrets.MOONCAKE_TOKEN }}"}' > /home/runner/.moon/credentials.json
 
       - name: Get release version
         id: get_release
