@@ -1,0 +1,69 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set default branch.
+        run: |
+          git fetch origin
+          git remote set-head origin --auto
+
+      - name: Prepare repository
+        run: git checkout main
+
+      - name: Setup MoonBit
+        uses: hustcer/setup-moonbit@v1.11
+      
+      - name: Setup MoonCake Credentials
+        run: |
+          mkdir -p /home/runner/.moon
+          echo '{"token": "${{ secrets.MOONCAKE_TOKEN }}"}' > /home/runner/.moon/credentials.json
+
+      - name: Updating MoonCake Index
+        run: moon update
+
+      - name: Get release version
+        id: get_release
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Init git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update Version
+        run: |
+          RELEASE_VERSION=${{ env.RELEASE_VERSION }}
+          IFS=$'\n' # Set the Internal Field Separator to newline for reading multi-line variable
+          
+          sed -i 's/"version": ".*"/"version": "'${RELEASE_VERSION}'"/' "moon.mod.json"
+          git add "moon.mod.json"
+
+      - name: GIT commit and push overriding conflicts with local changes (verbose)
+        continue-on-error: true
+        run: |
+          git commit -m "Update version to ${{ env.RELEASE_VERSION }}"
+          git fetch origin
+          git rebase --strategy-option=theirs origin/main
+          git push
+        
+      - name: Publish
+        run: |
+          moon publish
