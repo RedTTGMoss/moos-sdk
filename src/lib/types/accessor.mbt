@@ -32,13 +32,13 @@ pub impl @json.FromJson for Accessor with from_json(json, path) {
     Some(String(type_)) => type_
     _ => raise @json.JsonDecodeError((path, "Accessor::from_json:type_: expected String"))
   }
-  let uuid : String = match json.get("uuid") {
-    Some(String(uuid)) => uuid
-    _ => raise @json.JsonDecodeError((path, "Accessor::from_json:uuid: expected String"))
+  let uuid = match json.get("uuid") {
+    Some(String(uuid)) => Some(uuid)
+    _ => None
   }
-  let id : String = match json.get("id") {
-    Some(String(id)) => id
-    _ => raise @json.JsonDecodeError((path, "Accessor::from_json:id: expected String"))
+  let id = match json.get("id") {
+    Some(String(id)) => Some(id)
+    _ => None
   }
   
   {
