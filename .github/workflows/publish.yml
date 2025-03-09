@@ -36,6 +36,9 @@ jobs:
           mkdir -p /home/runner/.moon
           echo '{"token": "${{ secrets.MOONCAKE_TOKEN }}"}' > /home/runner/.moon/credentials.json
 
+      - name: Updating MoonCake Index
+        run: moon update
+
       - name: Get release version
         id: get_release
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
