@@ -1,6 +1,6 @@
 {
   "name": "furesoft/moos-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "deps": {
     "gmlewis/moonbit-pdk": "0.47.2"
   },
