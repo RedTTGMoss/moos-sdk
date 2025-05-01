@@ -100,6 +100,26 @@ fn hue_to_rgb(p: Double, q: Double, t: Double) -> Double {
   if t < 2.0 / 3.0 {
     return p + (q - p) * (2.0 / 3.0 - t) * 6.0
   }
-  
+
   p
+}
+
+pub fn Color::invert(self: Color) -> Color {
+  Color::new(255 - self.r, 255 - self.g, 255 - self.b, self.a)
+}
+
+pub fn Color::adjust_alpha(self: Color, new_alpha: Int) -> Color {
+  Color::new(self.r, self.g, self.b, new_alpha)
+}
+
+pub fn Color::adjust_brightness(self: Color, factor: Int) -> Color {
+  let mut r = (self.r * factor)
+  let mut g = (self.g * factor)
+  let mut b = (self.b * factor)
+
+  r = @math.clamp(r.to_double(), 0, 255).to_int()
+  g = @math.clamp(g.to_double(), 0, 255).to_int()
+  b = @math.clamp(b.to_double(), 0, 255).to_int()
+
+  Color::new(r, g, b, self.a)
 }
