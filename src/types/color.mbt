@@ -53,3 +53,53 @@ pub fn Color::from_hex(hex: String) -> Option[Color] {
     Some(Color::new(parts[0], parts[1], parts[2], parts[3]))
   }
 }
+
+pub fn Color::from_hls(hue: Double, lighting: Double, saturation: Double, alpha~: Int = 255) -> Color {
+  let mut r = 0.0
+  let mut g = 0.0
+  let mut b = 0.0
+
+  if saturation == 0.0 {
+    // achromatic
+    r = lighting
+    g = lighting
+    b = lighting
+  } else {
+    let q = if lighting < 0.5 {
+      lighting * (1.0 + saturation)
+    } else {
+      lighting + saturation - lighting * saturation
+    }
+
+    let p = 2.0 * lighting - q
+
+    r = hue_to_rgb(p, q, hue + 1.0 / 3.0)
+    g = hue_to_rgb(p, q, hue)
+    b = hue_to_rgb(p, q, hue - 1.0 / 3.0)
+  }
+
+  Color::new((r * 255).to_int(), (g * 255).to_int(), (b * 255).to_int(), alpha)
+}
+
+fn hue_to_rgb(p: Double, q: Double, t: Double) -> Double {
+  let mut t = t
+
+  if t < 0.0 {
+    t = t + 1.0
+  }
+  if t > 1.0 {
+    t = t - 1.0
+  }
+
+  if t < 1.0 / 6.0 {
+    return p + (q - p) * 6.0 * t
+  }
+  if t < 1.0 / 2.0 {
+    return q
+  }
+  if t < 2.0 / 3.0 {
+    return p + (q - p) * (2.0 / 3.0 - t) * 6.0
+  }
+  
+  p
+}
