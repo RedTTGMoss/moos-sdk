@@ -1,11 +1,11 @@
-pub struct ConfigSet {
+pub struct ConfigSet [T]{
   key : String
-  value : String
+  value : T
 } derive(Show, Eq, ToJson, FromJson)
 
-pub fn ConfigSet::new() -> ConfigSet {
+pub fn ConfigSet::new[T](key: String, value: T) -> ConfigSet[T] {
   {
-    key: "",
-    value: "",
+    key: key,
+    value: value,
   }
 }
