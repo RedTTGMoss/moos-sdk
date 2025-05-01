@@ -3,3 +3,5 @@ pub fn export_statistical_data() = "extism:host/user" "moss_em_export_statistica
 
 fn moss_defaults_set_color(keyPtr: Int64, colorPtr: Int64) = "extism:host/user" "moss_defaults_set_color"
 fn moss_defaults_get_color(keyPtr: Int64) -> Int64 = "extism:host/user" "moss_defaults_get_color"
+
+fn moss_em_config_get(keyPtr: Int64) -> Int64 = "extism:host/user" "moss_em_config_get"

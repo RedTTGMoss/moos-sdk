@@ -11,3 +11,14 @@ pub fn defaults_get_color(key: String) -> Option[@types.Color] {
 
   deserialize(colorPtr)
 }
+
+pub struct ConfigGet[T] {
+  value: T
+} derive (FromJson, ToJson, Show, Default)
+
+pub fn config_get[T: @json.FromJson](key: String) -> Option[ConfigGet[T]] {
+  let keyPtr = key.allocate()
+  let configPtr = moss_em_config_get(keyPtr)
+  
+  deserialize(configPtr)
+}
