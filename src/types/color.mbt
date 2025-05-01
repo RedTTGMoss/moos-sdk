@@ -14,6 +14,10 @@ pub fn Color::new(r: Int, g: Int, b: Int, a: Int) -> Color {
   }
 }
 
+fn fromHex(src: @string.StringView) -> Option[Int] {
+  @strconv.parse_int?(src.to_string(), base=16).to_option()
+}
+
 pub fn Color::from_hex(hex: String) -> Option[Color] {
   let mut hex = hex;
   if hex.has_prefix("#") {
@@ -26,7 +30,7 @@ pub fn Color::from_hex(hex: String) -> Option[Color] {
       hex.view(start_offset=2, end_offset=3),
       hex.view(start_offset=4, end_offset=5),
     ]
-    .map(@shared.hex_string_to_int)
+    .map(fromHex)
   } else if hex.length() == 8 {
     [
       hex.view(start_offset=0, end_offset=1),
@@ -34,7 +38,7 @@ pub fn Color::from_hex(hex: String) -> Option[Color] {
       hex.view(start_offset=4, end_offset=5),
       hex.view(start_offset=6, end_offset=7),
     ]
-    .map(@shared.hex_string_to_int)
+    .map(fromHex)
   } else {
     return None
   }
