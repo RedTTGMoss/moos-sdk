@@ -8,3 +8,8 @@ fn moss_em_config_get(keyPtr: Int64) -> Int64 = "extism:host/user" "moss_em_conf
 fn moss_em_config_set(ptr: Int64) = "extism:host/user" "_moss_em_config_set"
 
 fn moss_em_register_extension_button(buttonPtr: Int64) = "extism:host/user" "moss_em_register_extension_button"
+
+fn moss_text_make(textPtr: Int64, fontPtr: Int64, fontSize: Int64, colorsPtr: Int64) -> Int64 = "extism:host/user" "moss_text_make"
+fn moss_text_set_text(text_id: Int64, textPtr: Int64) -> Int64 = "extism:host/user" "moss_text_set_text"
+fn moss_text_set_font(text_id: Int64, fontPtr: Int64, fontSize: Int64) -> Int64 = "extism:host/user" "moss_text_set_font"
+fn moss_text_display(text_id: Int64) = "extism:host/user" "moss_text_display"
