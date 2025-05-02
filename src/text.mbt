@@ -17,6 +17,10 @@ pub fn Text::set_font(self: Text, font: String, font_size: Int64) -> @types.Rect
   deserialize(rectPtr).or_default()
 }
 
+pub fn Text::set_rect(self: Text, rect: @types.Rect) -> Unit {
+  moss_text_set_rect(self.id, allocate(rect));
+}
+
 pub fn Text::display(self: Text) -> Unit {
   moss_text_display(self.id);
 }
