@@ -11,3 +11,13 @@ pub fn defaults_get_color(key: String) -> Option[@types.Color] {
 
   deserialize(colorPtr)
 }
+
+pub fn defaults_get(key: String) -> Option[String] {
+  let valuePtr = moss_defaults_get(key.allocate())
+
+  deserialize(valuePtr)
+}
+
+pub fn defaults_set[T: ToJson](key: String, value: T) -> Unit {
+  moss_defaults_set(allocate(@types.ConfigSet::new(key, value)))
+}
