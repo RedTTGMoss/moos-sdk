@@ -6,3 +6,5 @@ fn moss_defaults_get_color(keyPtr: Int64) -> Int64 = "extism:host/user" "moss_de
 
 fn moss_em_config_get(keyPtr: Int64) -> Int64 = "extism:host/user" "moss_em_config_get"
 fn moss_em_config_set(ptr: Int64) = "extism:host/user" "_moss_em_config_set"
+
+fn moss_em_register_extension_button(buttonPtr: Int64) = "extism:host/user" "moss_em_register_extension_button"
