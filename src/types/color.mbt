@@ -1,4 +1,4 @@
-pub struct Color {
+pub(all) struct Color {
   r : Int
   g : Int
   b : Int

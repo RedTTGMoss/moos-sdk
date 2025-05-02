@@ -2,7 +2,6 @@
   "import": [
     "gmlewis/moonbit-pdk/pdk",
     "gmlewis/moonbit-pdk/pdk/host",
-    "furesoft/moos-sdk/shared",
     "Kaida-Amethyst/math"
   ]
 }

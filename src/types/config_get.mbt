@@ -1,3 +1,3 @@
 pub struct ConfigGet[T] {
-  value : T
-} derive(Show, Eq, ToJson, FromJson)
+  value: T
+} derive (FromJson, ToJson, Show, Default)
