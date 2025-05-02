@@ -13,3 +13,14 @@ pub fn deserialize[T: @json.FromJson](ptr: Int64) -> Option[T] {
   let json = @json.parse?(@host.find_memory(ptr).to_string())
   @json.from_json?(json.unwrap()).to_option()
 }
+
+fn getValue[T: @json.FromJson](ptr: Int64) -> T? {
+  let obj = deserialize(ptr);
+
+  if obj.is_empty() {
+    return None
+  }
+
+  let k: @types.ConfigGet[T] = obj.unwrap()
+  return Some(k.value)
+}
