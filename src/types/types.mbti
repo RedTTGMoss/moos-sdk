@@ -1,0 +1,126 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "furesoft/moos-sdk/types"
+
+import(
+  "moonbitlang/core/json"
+)
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct Accessor {
+  type_ : String
+  uuid : String?
+  id : String?
+}
+fn Accessor::new(String, String) -> Self
+fn Accessor::to_json(Self) -> Json
+impl Eq for Accessor
+impl Show for Accessor
+impl @json.FromJson for Accessor
+
+pub(all) struct Color {
+  r : Int
+  g : Int
+  b : Int
+  a : Int
+}
+fn Color::adjust_alpha(Self, Int) -> Self
+fn Color::adjust_brightness(Self, Int) -> Self
+fn Color::from_hex(String) -> Self?
+fn Color::from_hls(Double, Double, Double, alpha? : Int) -> Self
+fn Color::invert(Self) -> Self
+fn Color::new(Int, Int, Int, Int) -> Self
+impl Default for Color
+impl Eq for Color
+impl Show for Color
+impl ToJson for Color
+impl @json.FromJson for Color
+
+pub struct ConfigGet[T] {
+  value : T
+}
+impl[T : Default] Default for ConfigGet[T]
+impl[T : Show] Show for ConfigGet[T]
+impl[T : ToJson] ToJson for ConfigGet[T]
+impl[T : @json.FromJson] @json.FromJson for ConfigGet[T]
+
+pub struct ConfigSet[T] {
+  key : String
+  value : T
+}
+fn[T] ConfigSet::new(String, T) -> Self[T]
+impl[T : Eq] Eq for ConfigSet[T]
+impl[T : Show] Show for ConfigSet[T]
+impl[T : ToJson] ToJson for ConfigSet[T]
+impl[T : @json.FromJson] @json.FromJson for ConfigSet[T]
+
+pub struct ContextButton {
+  text : String
+  icon : String
+  context_icon : String
+  action : String
+  context_menu : String
+}
+fn ContextButton::new(String, String, String, String, contextIcon? : String?) -> Self
+impl Eq for ContextButton
+impl Show for ContextButton
+impl ToJson for ContextButton
+impl @json.FromJson for ContextButton
+
+pub(all) struct ExtensionInfo {
+  files : Array[File]
+}
+impl Show for ExtensionInfo
+impl ToJson for ExtensionInfo
+impl @json.FromJson for ExtensionInfo
+
+pub(all) struct File {
+  key : String
+  path : String
+}
+impl Show for File
+impl ToJson for File
+impl @json.FromJson for File
+
+pub struct Rect {
+  x : Int64
+  y : Int64
+  width : Int64
+  height : Int64
+}
+fn Rect::new(Int64, Int64, Int64, Int64) -> Self
+impl Default for Rect
+impl Show for Rect
+impl ToJson for Rect
+impl @json.FromJson for Rect
+
+pub struct State {
+  width : Int
+  height : Int
+  current_screen : String
+  opened_context_menus : Array[String]
+  icons : Array[String]
+}
+fn State::new() -> Self
+impl Eq for State
+impl Show for State
+impl ToJson for State
+impl @json.FromJson for State
+
+pub struct TextColor {
+  foreground : Color
+  background : Color?
+}
+fn TextColor::new(Color, background? : Color?) -> Self
+impl Eq for TextColor
+impl Show for TextColor
+impl ToJson for TextColor
+impl @json.FromJson for TextColor
+
+// Type aliases
+
+// Traits
+

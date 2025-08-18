@@ -1,15 +1,194 @@
-package furesoft/moos-sdk
+// Generated using `moon info`, DON'T EDIT IT
+package "furesoft/moos-sdk"
+
+import(
+  "furesoft/moos-sdk/types"
+  "moonbitlang/core/json"
+)
 
 // Values
-fn moss_extension_loop() -> Int
+fn[T : ToJson] allocate(T) -> Int64
 
-fn moss_extension_register() -> Int
+fn[T : @json.FromJson] config_get(String) -> @types.ConfigGet[T]?
 
-fn moss_extension_unregister() -> Int
+fn[T : ToJson] config_set(String, T) -> Unit
+
+fn[T : @json.FromJson] defaults_get(String) -> T?
+
+fn defaults_get_color(String) -> @types.Color?
+
+fn[T : ToJson] defaults_set(String, T) -> Unit
+
+fn defaults_set_color(String, @types.Color) -> Unit
+
+fn[T : @json.FromJson] deserialize(Int64) -> T?
+
+fn export_statistical_data() -> Unit
+
+fn register_extension_button(@types.ContextButton) -> Unit
+
+fn[T : ToJson] send(T) -> Unit
+
+// Errors
 
 // Types and methods
+pub struct Colors {
+}
+fn Colors::aliceBlue() -> @types.Color
+fn Colors::antiqueWhite() -> @types.Color
+fn Colors::aqua() -> @types.Color
+fn Colors::aquamarine() -> @types.Color
+fn Colors::azure() -> @types.Color
+fn Colors::beige() -> @types.Color
+fn Colors::bisque() -> @types.Color
+fn Colors::black() -> @types.Color
+fn Colors::blanchedAlmond() -> @types.Color
+fn Colors::blue() -> @types.Color
+fn Colors::blueViolet() -> @types.Color
+fn Colors::brown() -> @types.Color
+fn Colors::burlyWood() -> @types.Color
+fn Colors::cadetBlue() -> @types.Color
+fn Colors::chartreuse() -> @types.Color
+fn Colors::chocolate() -> @types.Color
+fn Colors::coral() -> @types.Color
+fn Colors::cornflowerBlue() -> @types.Color
+fn Colors::cornsilk() -> @types.Color
+fn Colors::crimson() -> @types.Color
+fn Colors::cyan() -> @types.Color
+fn Colors::darkBlue() -> @types.Color
+fn Colors::darkCyan() -> @types.Color
+fn Colors::darkGoldenrod() -> @types.Color
+fn Colors::darkGray() -> @types.Color
+fn Colors::darkGreen() -> @types.Color
+fn Colors::darkKhaki() -> @types.Color
+fn Colors::darkMagenta() -> @types.Color
+fn Colors::darkOliveGreen() -> @types.Color
+fn Colors::darkOrange() -> @types.Color
+fn Colors::darkOrchid() -> @types.Color
+fn Colors::darkRed() -> @types.Color
+fn Colors::darkSalmon() -> @types.Color
+fn Colors::darkSeaGreen() -> @types.Color
+fn Colors::darkSlateBlue() -> @types.Color
+fn Colors::darkSlateGray() -> @types.Color
+fn Colors::darkTurquoise() -> @types.Color
+fn Colors::darkViolet() -> @types.Color
+fn Colors::deepPink() -> @types.Color
+fn Colors::deepSkyBlue() -> @types.Color
+fn Colors::dimGray() -> @types.Color
+fn Colors::dodgerBlue() -> @types.Color
+fn Colors::firebrick() -> @types.Color
+fn Colors::floralWhite() -> @types.Color
+fn Colors::forestGreen() -> @types.Color
+fn Colors::fuchsia() -> @types.Color
+fn Colors::gainsboro() -> @types.Color
+fn Colors::ghostWhite() -> @types.Color
+fn Colors::gold() -> @types.Color
+fn Colors::goldenrod() -> @types.Color
+fn Colors::gray() -> @types.Color
+fn Colors::green() -> @types.Color
+fn Colors::greenYellow() -> @types.Color
+fn Colors::honeydew() -> @types.Color
+fn Colors::hotPink() -> @types.Color
+fn Colors::indianRed() -> @types.Color
+fn Colors::indigo() -> @types.Color
+fn Colors::ivory() -> @types.Color
+fn Colors::khaki() -> @types.Color
+fn Colors::lavender() -> @types.Color
+fn Colors::lavenderBlush() -> @types.Color
+fn Colors::lawnGreen() -> @types.Color
+fn Colors::lemonChiffon() -> @types.Color
+fn Colors::lightBlue() -> @types.Color
+fn Colors::lightCoral() -> @types.Color
+fn Colors::lightCyan() -> @types.Color
+fn Colors::lightGoldenrodYellow() -> @types.Color
+fn Colors::lightGray() -> @types.Color
+fn Colors::lightGreen() -> @types.Color
+fn Colors::lightPink() -> @types.Color
+fn Colors::lightSalmon() -> @types.Color
+fn Colors::lightSeaGreen() -> @types.Color
+fn Colors::lightSkyBlue() -> @types.Color
+fn Colors::lightSlateGray() -> @types.Color
+fn Colors::lightSteelBlue() -> @types.Color
+fn Colors::lightYellow() -> @types.Color
+fn Colors::lime() -> @types.Color
+fn Colors::limeGreen() -> @types.Color
+fn Colors::linen() -> @types.Color
+fn Colors::magenta() -> @types.Color
+fn Colors::maroon() -> @types.Color
+fn Colors::mediumAquamarine() -> @types.Color
+fn Colors::mediumBlue() -> @types.Color
+fn Colors::mediumOrchid() -> @types.Color
+fn Colors::mediumPurple() -> @types.Color
+fn Colors::mediumSeaGreen() -> @types.Color
+fn Colors::mediumSlateBlue() -> @types.Color
+fn Colors::mediumSpringGreen() -> @types.Color
+fn Colors::mediumTurquoise() -> @types.Color
+fn Colors::mediumVioletRed() -> @types.Color
+fn Colors::midnightBlue() -> @types.Color
+fn Colors::mintCream() -> @types.Color
+fn Colors::mistyRose() -> @types.Color
+fn Colors::moccasin() -> @types.Color
+fn Colors::navajoWhite() -> @types.Color
+fn Colors::navy() -> @types.Color
+fn Colors::oldLace() -> @types.Color
+fn Colors::olive() -> @types.Color
+fn Colors::oliveDrab() -> @types.Color
+fn Colors::orange() -> @types.Color
+fn Colors::orangeRed() -> @types.Color
+fn Colors::orchid() -> @types.Color
+fn Colors::paleGoldenrod() -> @types.Color
+fn Colors::paleGreen() -> @types.Color
+fn Colors::paleTurquoise() -> @types.Color
+fn Colors::paleVioletRed() -> @types.Color
+fn Colors::papayaWhip() -> @types.Color
+fn Colors::peachPuff() -> @types.Color
+fn Colors::peru() -> @types.Color
+fn Colors::pink() -> @types.Color
+fn Colors::plum() -> @types.Color
+fn Colors::powderBlue() -> @types.Color
+fn Colors::purple() -> @types.Color
+fn Colors::red() -> @types.Color
+fn Colors::rosyBrown() -> @types.Color
+fn Colors::royalBlue() -> @types.Color
+fn Colors::saddleBrown() -> @types.Color
+fn Colors::salmon() -> @types.Color
+fn Colors::sandyBrown() -> @types.Color
+fn Colors::seaGreen() -> @types.Color
+fn Colors::seaShell() -> @types.Color
+fn Colors::sienna() -> @types.Color
+fn Colors::silver() -> @types.Color
+fn Colors::skyBlue() -> @types.Color
+fn Colors::slateBlue() -> @types.Color
+fn Colors::slateGray() -> @types.Color
+fn Colors::snow() -> @types.Color
+fn Colors::springGreen() -> @types.Color
+fn Colors::steelBlue() -> @types.Color
+fn Colors::tan() -> @types.Color
+fn Colors::teal() -> @types.Color
+fn Colors::thistle() -> @types.Color
+fn Colors::tomato() -> @types.Color
+fn Colors::turquoise() -> @types.Color
+fn Colors::violet() -> @types.Color
+fn Colors::wheat() -> @types.Color
+fn Colors::white() -> @types.Color
+fn Colors::whiteSmoke() -> @types.Color
+fn Colors::yellow() -> @types.Color
+fn Colors::yellowGreen() -> @types.Color
+
+pub struct Text {
+  id : Int64
+}
+fn Text::display(Self) -> Unit
+fn Text::new(String, String, Int64, @types.TextColor) -> Self
+fn Text::set_font(Self, String, Int64) -> @types.Rect
+fn Text::set_rect(Self, @types.Rect) -> Unit
+fn Text::set_text(Self, String) -> @types.Rect
 
 // Type aliases
 
 // Traits
+pub(open) trait Allocate {
+  allocate(Self) -> Int64
+}
+impl Allocate for String
 
