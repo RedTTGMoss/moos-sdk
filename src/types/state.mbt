@@ -1,3 +1,4 @@
+///|
 pub struct State {
   width : Int
   height : Int
@@ -6,6 +7,7 @@ pub struct State {
   icons : Array[String]
 } derive(Show, Eq, ToJson, FromJson)
 
+///|
 pub fn State::new() -> State {
   {
     width: 0,

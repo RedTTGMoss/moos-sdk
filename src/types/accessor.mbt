@@ -1,17 +1,16 @@
+///|
 pub struct Accessor {
   type_ : String
-  uuid : Option[String]
-  id : Option[String]
+  uuid : String?
+  id : String?
 } derive(Show, Eq)
 
-pub fn Accessor::new(_type: String, uuid: String) -> Accessor {
-  {
-    type_: _type,
-    uuid: Some(uuid),
-    id: None,
-  }
+///|
+pub fn Accessor::new(_type : String, uuid : String) -> Accessor {
+  { type_: _type, uuid: Some(uuid), id: None }
 }
 
+///|
 pub fn to_json(self : Accessor) -> Json {
   let json : Map[String, Json] = {}
   json["type"] = self.type_.to_json()
@@ -20,6 +19,7 @@ pub fn to_json(self : Accessor) -> Json {
   json.to_json()
 }
 
+///|
 pub impl @json.FromJson for Accessor with from_json(json, path) {
   let json = match json.as_object() {
     Some(json) => json
@@ -30,7 +30,10 @@ pub impl @json.FromJson for Accessor with from_json(json, path) {
   }
   let type_ : String = match json.get("type") {
     Some(String(type_)) => type_
-    _ => raise @json.JsonDecodeError((path, "Accessor::from_json:type_: expected String"))
+    _ =>
+      raise @json.JsonDecodeError(
+        (path, "Accessor::from_json:type_: expected String"),
+      )
   }
   let uuid = match json.get("uuid") {
     Some(String(uuid)) => Some(uuid)
@@ -40,10 +43,5 @@ pub impl @json.FromJson for Accessor with from_json(json, path) {
     Some(String(id)) => Some(id)
     _ => None
   }
-  
-  {
-    type_,
-    uuid,
-    id,
-  }
+  { type_, uuid, id }
 }

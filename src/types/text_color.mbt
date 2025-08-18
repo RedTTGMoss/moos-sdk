@@ -1,11 +1,13 @@
+///|
 pub struct TextColor {
-  foreground: Color
-  background: Option[Color]
+  foreground : Color
+  background : Color?
 } derive(Show, Eq, ToJson, FromJson)
 
-pub fn TextColor::new(foreground: Color, background~: Option[Color] = None) -> TextColor {
-  {
-    foreground: foreground,
-    background: background,
-  }
+///|
+pub fn TextColor::new(
+  foreground : Color,
+  background~ : Color? = None,
+) -> TextColor {
+  { foreground, background }
 }

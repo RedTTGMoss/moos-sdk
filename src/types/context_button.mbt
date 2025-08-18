@@ -1,3 +1,4 @@
+///|
 pub struct ContextButton {
   text : String
   icon : String
@@ -6,12 +7,19 @@ pub struct ContextButton {
   context_menu : String
 } derive(Show, Eq, ToJson, FromJson)
 
-pub fn ContextButton::new(text: String, icon: String, action: String, contextMenu: String, contextIcon~: Option[String] = None) -> ContextButton {
+///|
+pub fn ContextButton::new(
+  text : String,
+  icon : String,
+  action : String,
+  contextMenu : String,
+  contextIcon~ : String? = None,
+) -> ContextButton {
   {
-    text: text,
-    icon: icon,
+    text,
+    icon,
     context_icon: contextIcon.or_default(),
-    action: action,
+    action,
     context_menu: contextMenu,
   }
 }

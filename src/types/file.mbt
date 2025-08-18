@@ -1,4 +1,5 @@
+///|
 pub(all) struct File {
-  key: String
-  path: String
+  key : String
+  path : String
 } derive(Show, ToJson, FromJson)
