@@ -10,8 +10,8 @@ pub fn[T : ToJson] allocate(obj : T) -> Int64 {
 
 ///| Finds an object in the host memory and deserializes it to the given type.
 pub fn[T : @json.FromJson] deserialize(ptr : Int64) -> T? {
-  let json = @json.parse?(@host.find_memory(ptr).to_string())
-  @json.from_json?(json.unwrap()).to_option()
+  let json = try? @json.parse(@host.find_memory(ptr).to_string())
+  (try? @json.from_json(json.unwrap())).to_option()
 }
 
 ///|

@@ -1,7 +1,5 @@
 {
   "import": [
-    "gmlewis/moonbit-pdk/pdk",
-    "gmlewis/moonbit-pdk/pdk/host",
     "Kaida-Amethyst/math"
   ]
 }

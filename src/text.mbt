@@ -11,8 +11,8 @@ pub fn Text::new(
   colors : @types.TextColor,
 ) -> Text {
   let id = moss_text_make(
-    text.allocate(),
-    font.allocate(),
+    Allocate::allocate(text),
+    Allocate::allocate(font),
     font_size,
     allocate(colors),
   )
@@ -21,8 +21,8 @@ pub fn Text::new(
 
 ///|
 pub fn Text::set_text(self : Text, text : String) -> @types.Rect {
-  let rectPtr = moss_text_set_text(self.id, text.allocate())
-  deserialize(rectPtr).or_default()
+  let rectPtr = moss_text_set_text(self.id, Allocate::allocate(text))
+  deserialize(rectPtr).unwrap_or_default()
 }
 
 ///|
@@ -31,8 +31,8 @@ pub fn Text::set_font(
   font : String,
   font_size : Int64,
 ) -> @types.Rect {
-  let rectPtr = moss_text_set_font(self.id, font.allocate(), font_size)
-  deserialize(rectPtr).or_default()
+  let rectPtr = moss_text_set_font(self.id, Allocate::allocate(font), font_size)
+  deserialize(rectPtr).unwrap_or_default()
 }
 
 ///|

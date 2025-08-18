@@ -12,8 +12,8 @@ pub fn Color::new(r : Int, g : Int, b : Int, a : Int) -> Color {
 }
 
 ///|
-fn fromHex(src : @string.StringView) -> Int? {
-  @strconv.parse_int?(src.to_string(), base=16).to_option()
+fn fromHex(src : @string.View) -> Int? {
+  (try? @strconv.parse_int(src.to_string(), base=16)).to_option()
 }
 
 ///|

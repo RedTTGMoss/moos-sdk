@@ -18,7 +18,7 @@ pub fn ContextButton::new(
   {
     text,
     icon,
-    context_icon: contextIcon.or_default(),
+    context_icon: contextIcon.unwrap_or_default(),
     action,
     context_menu: contextMenu,
   }

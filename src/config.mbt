@@ -1,6 +1,6 @@
 ///|
 pub fn[T : @json.FromJson] config_get(key : String) -> @types.ConfigGet[T]? {
-  let keyPtr = key.allocate()
+  let keyPtr = Allocate::allocate(key)
   let configPtr = moss_em_config_get(keyPtr)
   deserialize(configPtr)
 }

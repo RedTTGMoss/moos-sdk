@@ -1,8 +1,6 @@
 {
   "import": [
-    "gmlewis/moonbit-pdk/pdk",
     "gmlewis/moonbit-pdk/pdk/host",
-    "furesoft/moos-sdk/types",
-    "gmlewis/moonbit-pdk/pdk/extism"
+    "furesoft/moos-sdk/types"
   ]
 }

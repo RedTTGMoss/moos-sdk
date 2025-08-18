@@ -33,6 +33,7 @@ fn[T : ToJson] send(T) -> Unit
 
 // Types and methods
 pub struct Colors {
+  // private fields
 }
 fn Colors::aliceBlue() -> @types.Color
 fn Colors::antiqueWhite() -> @types.Color

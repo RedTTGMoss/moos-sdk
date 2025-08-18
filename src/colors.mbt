@@ -1,5 +1,10 @@
+///| Utility struct for predefined colors - this struct is used only as a namespace
+pub struct Colors {
+  priv _marker : Unit
+}
+
 ///|
-pub struct Colors {}
+let _unused_colors_instance : Colors = { _marker: () }
 
 ///|
 pub fn Colors::aliceBlue() -> @types.Color {
